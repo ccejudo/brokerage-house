@@ -1,0 +1,12 @@
+.card {
+    height: 22%;
+    background-color: #59C3C3;
+    border-radius: 20px;
+    margin: 3% 0 !important;
+    text-align: center;
+}
+
+.card:hover {
+    background-color: #42f0f0;
+    transform: scale(1.1);
+}

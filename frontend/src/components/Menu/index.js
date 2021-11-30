@@ -4,20 +4,27 @@ import AppContext from '../AppContex'
 
 function Menu() {
     const context = useContext(AppContext)
-    const menu_options = ["Front Office", "Middle Office", "Back Office"]
+    const menu_options = ["Mi portafolio", "Comprar Acciones", "Comprar Derivados", "Comprar Bonos", "VaR Tipo de Cambio"]
+
+    const handleOptionChange = ( i ) => {
+        context.setMenuOption(i)
+        context.setDashboard(-1)
+    }
 
     const renderMenuOptions = ( options ) => {
-        return options.map( option => {
+        return options.map( ( option, i ) => {
             return(
                 <>
                     <ListItem>
-                        <ListItemButton>
+                        <ListItemButton
+                            onClick={ () => handleOptionChange(i) }
+                        >
                             <ListItemText
                                 primary={<h3 style={styles.menuOption}>{option}</h3>}
                             />
                         </ListItemButton>
                     </ListItem>
-                    <Divider component="li" sx={{backgroundColor:"#FC8E61"}}/>
+                    <Divider component="li" sx={{backgroundColor:"#59C3C3"}}/>
                 </>
             )
         })
@@ -26,6 +33,7 @@ function Menu() {
     return (
         <Grid container item xs={3} style={styles.menu}>
             <Grid item xs={12}>
+                <h1>Casa de Bolsa</h1>
                 <List>
                     <ListItem>
                         <ListItemAvatar>
@@ -36,7 +44,6 @@ function Menu() {
                             primary = {<h2>{context.user.name}</h2>}
                         />
                     </ListItem>
-                    <Divider component="li" sx={{backgroundColor:"#FC8E61"}}/>
                     { renderMenuOptions(menu_options) }
                 </List>
             </Grid>
@@ -47,7 +54,7 @@ function Menu() {
 const styles = {
     menu: {
         padding: '2% 1%',
-        backgroundColor: '#063B56',
+        backgroundColor: '#010D13',
         color: 'white',
     },
 
