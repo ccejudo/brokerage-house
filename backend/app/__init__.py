@@ -1,8 +1,11 @@
 from flask import Flask, request
+from flask_cors import CORS
 import json
 import os
 
 app = Flask(__name__)
+cors = CORS(app)
+app.config['CORS_HEADERS'] = 'Content-Type'
 
 dataFile = os.path.join(os.path.dirname(__file__), './data/user_data.json')
 
