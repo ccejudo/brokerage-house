@@ -2,6 +2,7 @@
 
 # static data
 frontend/src/data
+data/
 
 # dependencies
 */node_modules
