@@ -8,7 +8,6 @@ function Menu() {
 
     const handleOptionChange = ( i ) => {
         context.setMenuOption(i)
-        context.setDashboard(-1)
     }
 
     const renderMenuOptions = ( options ) => {
