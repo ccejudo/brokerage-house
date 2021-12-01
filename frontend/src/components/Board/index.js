@@ -1,43 +1,19 @@
 import React, { useContext } from 'react'
 import AppContext from '../AppContex'
+import Portafolio from '../Portafolio'
+import Stocks from '../Stocks'
+import Derivados from '../Derivados'
+import Bonos from '../Bonos'
+import Risks from '../Risks'
 import { Grid } from '@mui/material'
-import { DataGrid } from '@mui/x-data-grid';
 
 function Board() {
-    const context = useContext( AppContext )
-    const rows = [];
-
-    const columns = [
-        { field: 'id', headerName: 'ID', width: 70 },
-        { field: 'firstName', headerName: 'First name', width: 130 },
-        { field: 'lastName', headerName: 'Last name', width: 130 },
-        {
-          field: 'age',
-          headerName: 'Age',
-          type: 'number',
-          width: 90,
-        },
-        {
-          field: 'fullName',
-          headerName: 'Full name',
-          description: 'This column has a value getter and is not sortable.',
-          sortable: false,
-          width: 160,
-          valueGetter: (params) =>
-            `${params.getValue(params.id, 'firstName') || ''} ${
-              params.getValue(params.id, 'lastName') || ''
-            }`,
-        },
-    ];
+    const context = useContext( AppContext );
+    const boards = [ <Portafolio />, <Stocks />, <Derivados />, <Bonos />, <Risks /> ];
 
     return (
         <Grid container item xs={9} style={styles.board}>
-            <DataGrid
-                rows={rows}
-                columns={columns}
-                rowsPerPageOptions={[5]}
-                checkboxSelection
-            />
+            { boards[ context.menuOption ] }
         </Grid>
     )
 }
