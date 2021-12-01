@@ -14,16 +14,14 @@ function Menu() {
         return options.map( ( option, i ) => {
             return(
                 <>
-                    <ListItem>
-                        <ListItemButton
-                            onClick={ () => handleOptionChange(i) }
-                        >
-                            <ListItemText
+                    <ListItem key={i}>
+                        <ListItemButton key={i + "button"} onClick={() => handleOptionChange(i)}>
+                            <ListItemText key={i + "text"}
                                 primary={<h3 style={styles.menuOption}>{option}</h3>}
                             />
                         </ListItemButton>
                     </ListItem>
-                    <Divider component="li" sx={{backgroundColor:"#59C3C3"}}/>
+                    <Divider key={i + "divider"} component="li" sx={{backgroundColor:"#59C3C3"}}/>
                 </>
             )
         })
